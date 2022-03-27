@@ -132,22 +132,17 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Center(
                   child: TextButton(
-                    child: Text('Date de naissance'),
+                    child: Text('Date de naissance : ${_date.toString().substring(0, 10)}',  style: TextStyle(fontSize: 30),),
                     onPressed: _selectDate,
                   ),
                 ),
                 Center(
                   child: TextButton(
-                    child: Text('Heure de naissance'),
+                    child: Text('Heure de naissance : ${_time.hour} h ${_time.minute}',  style: TextStyle(fontSize: 30),),
                     onPressed: _selectTime,
                   ),
                 ),
-                Center(
-                  child: Text(
-                    'Je suis né le ${_date.toString().substring(0, 10)} à ${_time.hour} h ${_time.minute}',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
+
                 Center(
                   child: Text(
                     'Nous sommes le ${dateToday.toString().substring(0, 10)}, il est $_timeString',
@@ -166,28 +161,34 @@ class _MyHomePageState extends State<MyHomePage> {
             //ONGLET 2
             Column(
               children: [
-                Center(
+                SizedBox(
+                  height: 100,
+                  width: 300,
                   child: TextButton(
-                    child: Text('Date1'),
+                    child: Text('Date 1 : ${_date1.toString().substring(0, 10)}',  style: const TextStyle(fontSize: 30),
+                    ),
                     onPressed: _dateC1,
                   ),
                 ),
-                Center(
+
+                // Center(
+                //   child: TextButton(
+                //     child: Text('Date 1 : ${_date1.toString().substring(0, 10)}'),
+                //     onPressed: _dateC1,
+                //   ),
+                // ),
+                SizedBox(
+                  height: 100,
+                  width: 300,
                   child: TextButton(
-                    child: Text('Date2'),
-                    onPressed: _dateC2,
+                    child: Text('Date 2 : ${_date2.toString().substring(0, 10)}',  style: const TextStyle(fontSize: 30),),
+                    onPressed: _dateC1,
                   ),
                 ),
-                Center(
-                  child: Text(
-                    'Date 1 : ${_date1.toString().substring(0, 10)} Date 2 : ${_date2.toString().substring(0, 10)}',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
+
                 Center(
                   child: Text(
                     '${diff(_date1, _date2)}',
-                    //'La différence entre ces deux dates est de  ${diff(_date1, _date2, 1)} ans, ${diff(_date1, _date2, 2)} mois et ${diff(_date1, _date2, 3)} jours',
                     style: TextStyle(fontSize: 30),
                   ),
                 ),
@@ -202,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _getCurrentTime() {
     setState(() {
       _timeString =
-          "${DateTime.now().hour} : ${DateTime.now().minute} :${DateTime.now().second}";
+          "${DateTime.now().hour} : ${DateTime.now().minute} : ${DateTime.now().second}";
     });
   }
 
@@ -268,6 +269,6 @@ class _MyHomePageState extends State<MyHomePage> {
       mois += 12;
     }
 
-    return 'J\'ai ${annees} ans, ${mois} mois ${jours} jours ${heures} heures, ${minutes} minutes et ${secondes} secondes';
+    return 'J\'ai ${annees} ans, ${mois} mois, ${jours} jours, ${heures} heures, ${minutes} minutes et ${secondes} secondes';
   }
 }
